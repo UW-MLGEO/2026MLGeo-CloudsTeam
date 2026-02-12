@@ -5,6 +5,6 @@ subtext
 # Section Title
 descriptions if needed <br>
 
-## Subtitle
+## Subsection
 descriptions if needed <br>
 

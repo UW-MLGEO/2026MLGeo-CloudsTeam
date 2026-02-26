@@ -15,4 +15,4 @@ Outputs: pre-tornadic conditions, and also binary classification of whether a to
 Our data already comes split into training and testing, and with a tornado category, so we will be able to select the images we need fairly easily. Out of those tornado-labeled images we will take a random subsample out of the 13,000 tornadic events in our data. We will also make sure our classes are balanced to prevent bias, i.e 50 samples with tornadoes with hooks, 50 samples of tornadoes with no hooks, and 50 non-tornadic cells. We will choose about 50 events from each category, and then label each frame within the event into the categories mentioned above. For our classifying model we will randomly subset the frames within our subsample to get the 50 frames we need for each category. This will be the trained dataset for the model. The output of this model will be our input for our unsupervised predictive model. 
 
 #### Resources
-None needed.
+None needed for processing the training/input dataset. Further discussion on potentially needing resources from Akshay at choosing ML/running ML stage.

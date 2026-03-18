@@ -98,22 +98,18 @@ Below is a radar image showing a tornado without a hook.
 
 
 ## Results
-- Though we got our model to perform a bit better than random guessing, the performance was still not very good at identifying hook echoes. 
-<br>
+- Though we got our model to perform a bit better than random guessing, the performance was still not very good at identifying hook echoes. <br>
 **Figure 6:** Mean ROC Curve generated from results of 10 model runs. <br>
 ![MeanROC](figures/mean_ROC.png)
-<br>
-Looking at Figure 6, we can see that most of the runs did better than random chance (barely), with Run 7 actually doing worse than random. Although this means that the model is learning something, the fact that at least 10% of the runs could perform only about good as random guessing means our model is unstable and not very accurate. 
-<br><br>
+Looking at Figure 6, we can see that most of the runs did better than random chance (barely), with Run 7 actually doing worse than random. Although this means that the model is learning something, the fact that at least 10% of the runs could perform only about good as random guessing means our model is unstable and not very accurate. <br><br>
 **Figure 7:** Mean Confusion Matrix generated from results of 10 model runs. <br>
 ![ConfusionMatrix](figures/mean_confusion_matrix.png)
-<br> 
-Figure 7, our mean confusion matrix shows that it ended up getting about ⅔ of the tornado hooks correct, and slightly over half of the no-hooks correct. This means our model did not do very well, but considering our model previously was not categorizing any of the hooks correctly, the final version of the model was at least learning something.
-<br><br>
+Figure 7, our mean confusion matrix shows that it ended up getting about ⅔ of the tornado hooks correct, and slightly over half of the no-hooks correct. This means our model did not do very well, but considering our model previously was not categorizing any of the hooks correctly, the final version of the model was at least learning something. <br><br>
 **Figure 8:** Model Prediction Probability based on 10 model runs. <br>
 ![PDF](figures/prediction_pdf.png)
-<br>
-Looking at Figure 8, our prediction probability distribution confirms our previous findings. Both curves sit in about the .4 - .6 range, meaning our model is fairly uncertain. However, the hook distribution is in a slightly higher range than the non-hook distribution, showing that our model is slightly more confident in identifying hooks than non-hooks. 
+Looking at Figure 8, our prediction probability distribution confirms our previous findings. Both curves sit in about the .4 - .6 range, meaning our model is fairly uncertain. However, the hook distribution is in a slightly higher range than the non-hook distribution, showing that our model is slightly more confident in identifying hooks than non-hooks.
+
+
 
 
 ## Discussion

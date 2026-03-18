@@ -14,11 +14,13 @@ Lesly Silva - 4th year ESS undergrad <br> <br>
 
 ## Introduction
 - Tornadoes are dangerous and pose a large risk to human life and society, therefore exploring methods to improve forecasting is an important task. <br>
+
 **Figure 1:** Annual tornado counts (bars) and associated fatalities (line) in the United States since 1950, highlighting the persistent societal risk posed by severe storms. Data Source: NOAA SPC. <br>
 ![Tornado History](figures/Tornado_stats.png)
 - One way scientists identify tornadoes on radar is by looking for hook echoes, which are hook, bean, or pendant-like shapes visible on radar that occur when rain or hail is wrapping around a rotating storm. 
 - This final class project for ESS 469/569 aims to explore the use of machine learning, specifically a Convolutional Neural Network (CNN), for identifying tornado hook echoes on radar imagery. 
 - ***Project Question: How can we use machine learning to identify tornado hook echoes in radar imagery?*** <br>
+
 **Figure 2:** Examples of radar imagery showing different types of hook echoes with the left image showing a classic defined hook shape while the image on the right shows a more pendant or appendage-shaped hook.<br>
 ![Hook Echo Example1](figures/hookex1.png)
 ![Hook Echo Example2](figures/hookex2.png)

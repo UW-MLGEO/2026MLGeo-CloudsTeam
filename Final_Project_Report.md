@@ -47,6 +47,7 @@ Lesly Silva - 4th year ESS undergrad <br> <br>
 - From the [TOR]  category, we randomly selected cases and labelled each frame with a binary classification of a tornado with a hook (1) or a tornado without a hook (0).
 - Our final numbers for the trained data input were 1523 tornadoes without hooks (0) and 228 tornadoes with hooks (1). So 12.6% of the input data had hooks, and 87.4% did not have hooks.
 - This trained data was also split 80/20, as our training and validation data, respectively. <br>
+
 **Figure 3:** Shows examples from our training data of what a tornado without a hook and a tornado with a hook looks like. <br>
 Below is a radar image showing a tornado with a hook.
 ![torhook example](figures/torhookexample.png) <br>
@@ -61,6 +62,7 @@ Below is a radar image showing a tornado without a hook.
 - To handle the natural class imbalance that exists for the presence of tornado hooks in the data, we implemented balanced batching. 
     - Balanced batching - after the 80/20 train/test split is implemented on the input data, we created training batches that consisted of 8 total samples with 4 randomly chosen tornado with hook samples and 4 randomly chosen tornado without hook samples (creating 50/50 class balance). This technique allows the rarer tornado with hook samples to be seen multiple times while only a subset of the tornado without hook samples are seen in each epoch.
 - Additionally, in order to improve model performance, we implemented data augmentation techniques on the input data. Figure 4 below shows the order in which we implemented data augmentation on our input data. <br>
+
 **Figure 4:** The following data augmentation techniques were applied to our labeled samples of both classes in the order shown: Random horizontal flips on 50% of the images from both classes, random vertical flips on 50% of the images from both classes, and random small Gaussian Noise on all samples from both classes. <br>
 ![data_aug](figures/data_aug.png) <br>
 
@@ -80,6 +82,7 @@ Below is a radar image showing a tornado without a hook.
 - The TorNet CNN uses inputs from the TorNet dataset, and the output is a heatmap that shows the probability of when and where a tornado will occur.
 - We originally chose this model because we had a second goal of using the outputs from our current model to forecast tornadoes, so we chose an existing model that had similar outputs.
 - We used their model for transfer learning by freezing all convolutional layers in their model except for the last 15 layers and removing their output layers. Figure 5 below depicts how we changed the TorNet architecture for transfer learning and our new output hyperparameters. <br>
+
 **Figure 5:** Shows the TorNet CNN architecture (top) and our CNN architecture (bottom), and how we performed the transfer learning. <br>
 ![model architecture](figures/torhook_architecture.png)
 - Additional details about our model hyperparameters are listed below:
@@ -99,12 +102,14 @@ Below is a radar image showing a tornado without a hook.
 
 ## Results
 - Though our model performs a bit better than random guessing, the model is still not very good at identifying hook echoes. <br>
+
 **Figure 6:** Mean ROC Curve generated from results of 10 model runs. <br>
 ![MeanROC](figures/mean_ROC.png)
 Looking at Figure 6, we can see that most of the model runs performed better than random chance; however, Run 7 actually performed worse than random. Although this means that the model is learning something, the fact that at least 10% of the runs could perform only as well as random guessing indicates our model is unstable and not very precise. <br><br>
 **Figure 7:** Mean Confusion Matrix generated from results of 10 model runs. <br>
 ![ConfusionMatrix](figures/mean_confusion_matrix.png)
 In Figure 7, our mean confusion matrix shows that the model ended up predicting about ⅔ of the tornadoes with hooks correct, and slightly over half of the tornadoes without hooks correct. However, the tornadoes without hooks performance has a relatively large error. This means our model is not very accurate, but considering our model was previously incorrectly categorizing all of the tornado with hooks, the final version of the model showed some improvement with the addition of balanced batching and data augmentation. <br><br>
+
 **Figure 8:** Model Prediction Probability based on 10 model runs. <br>
 ![PDF](figures/prediction_pdf.png)
 Looking at Figure 8, our prediction probability distribution confirms our previous findings. Both curves sit in the .4 - .6 range, meaning our model is fairly uncertain. However, the true tornadoes with hooks (hook) distribution is in a slightly higher range than the true tornado without hooks (no hook) distribution, showing that our model is slightly more confident in identifying hooks than no hooks.
@@ -115,6 +120,7 @@ Looking at Figure 8, our prediction probability distribution confirms our previo
 ## Discussion
 - We believe the best explanation for our model’s subpar performance is the way we chose to train our data. Although hook echoes are a way scientists use to identify tornadoes, it is more of a colloquial term than anything else. There are no official classifications or definitions for what these hooks actually look like. Even the official definition lists several different shapes the hook could look like. 
 - This made it hard to actually label the data, and we as a group struggled to come up with a concrete definition of exactly what we were looking for. Though some hooks were very clear and well-defined, many weren’t, which left a lot of ambiguity in our training data. Figure 9 below shows an example of a frame that we were unsure how to label. <br>
+
 **Figure 9:** An example of a radar frame that we were unsure of whether there was a hook or not.
 ![ambiguous hook](figures/ambiguous_hook.png)
 - This ambiguity, we believe, is what led to most of the errors with our model. If we didn’t know what we were looking for, how could the model?

@@ -1,3 +1,23 @@
+## How to navigate our repository
+
+Our final project report and summary is saved as Final_Project_Report.md. It should have all the information you need about our project.
+
+We have two folders, code_notebooks and figures. The figures one is there so that all the images in our markdown file display. 
+
+Here is a rundown of each notebook and it's purpose in our code_notebooks folder:
+- accessing_tornet_data.ipynb
+    - This notebook was primarily used to set everyone in our group with access to the aws server that housed our data. Since this server was private and will be discontinued going forward, data will only be available for downnload on the tornet github: https://github.com/mit-ll/tornet
+- radar_labeler.ipynb
+    - This is the notebook we used to train our data. It selects random subsets from the TorNet data and displays each frame one by one, allowing the user to click buttons on the widget to save the frame filepath in a csv file for later use by the model.
+- torhook_model.ipynb
+    - This is the notebook that actually runs our model. For specifics about our model, please refer to our Final Project markdown file.
+- model_metric_plots.ipynb
+    - This notebook creates the plots for validating our model and analysis on it's performance. 
+
+
+### Below is the Read_Me file we were asked to make early on in the project. We left it in just in case it was needed to grade our assignment, but it does contain dated information.
+
+
 ## Data information
 #### Accessing our data
 We have downloaded the data from the tornet github which had a site from which you could download data. We have already downloaded all of it onto Sofia's hardrive. In total it is around 100GB so we are currently uploading it to an amazon server under Sofia's name. The data should finish uploading by the end of the week (02/13). We have tested that everyone in our group can access it through our python notebook.

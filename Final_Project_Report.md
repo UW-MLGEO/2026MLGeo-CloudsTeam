@@ -16,14 +16,14 @@ Lesly Silva - 4th year ESS undergrad <br> <br>
 - Tornadoes are dangerous and pose a large risk to human life and society, therefore exploring methods to improve forecasting is an important task. <br>
 
 **Figure 1:** Annual tornado counts (bars) and associated fatalities (line) in the United States since 1950, highlighting the persistent societal risk posed by severe storms. Data Source: NOAA SPC. <br>
-![Tornado History](figures/Tornado_stats.png)
+![Tornado History](figures/markdown_figures/Tornado_stats.png)
 - One way scientists identify tornadoes on radar is by looking for hook echoes, which are hook, bean, or pendant-like shapes visible on radar that occur when rain or hail is wrapping around a rotating storm. 
 - This final class project for ESS 469/569 aims to explore the use of machine learning, specifically a Convolutional Neural Network (CNN), for identifying tornado hook echoes on radar imagery. 
 - ***Project Question: How can we use machine learning to identify tornado hook echoes in radar imagery?*** <br>
 
 **Figure 2:** Examples of radar imagery showing different types of hook echoes with the left image showing a classic defined hook shape while the image on the right shows a more pendant or appendage-shaped hook.<br>
-![Hook Echo Example1](figures/hookex1.png)
-![Hook Echo Example2](figures/hookex2.png)
+![Hook Echo Example1](figures/markdown_figures/hookex1.png)
+![Hook Echo Example2](figures/markdown_figures/hookex2.png)
 
 
 
@@ -52,9 +52,9 @@ Lesly Silva - 4th year ESS undergrad <br> <br>
 
 **Figure 3:** Shows examples from our training data of what a tornado without a hook and a tornado with a hook looks like. <br>
 Below is a radar image showing a tornado with a hook.
-![torhook example](figures/torhookexample.png) <br>
+![torhook example](figures/markdown_figures/torhookexample.png) <br>
 Below is a radar image showing a tornado without a hook.
-![tornohook example](figures/tornohookexample.png).
+![tornohook example](figures/markdown_figures/tornohookexample.png).
 
 
 
@@ -66,7 +66,7 @@ Below is a radar image showing a tornado without a hook.
 - Additionally, in order to improve model performance, we implemented data augmentation techniques on the input data. Figure 4 below shows the order in which we implemented data augmentation on our input data. <br>
 
 **Figure 4:** The following data augmentation techniques were applied to our labeled samples of both classes in the order shown: Random horizontal flips on 50% of the images from both classes, random vertical flips on 50% of the images from both classes, and random small Gaussian Noise on all samples from both classes. <br>
-![data_aug](figures/data_aug.png) <br>
+![data_aug](figures/markdown_figures/data_aug.png) <br>
 
 
 
@@ -86,7 +86,7 @@ Below is a radar image showing a tornado without a hook.
 - We used their model for transfer learning by freezing all convolutional layers in their model except for the last 15 layers and removing their output layers. Figure 5 below depicts how we changed the TorNet architecture for transfer learning and our new output hyperparameters. <br>
 
 **Figure 5:** Shows the TorNet CNN architecture (top) and our CNN architecture (bottom), and how we performed the transfer learning. <br>
-![model architecture](figures/torhook_architecture.png)
+![model architecture](figures/markdown_figures/torhook_architecture.png)
 - Additional details about our model hyperparameters are listed below:
     - Output/Classification layers:
         - Global Average Pooling (2D) - compresses each feature map into a single number by averaging.
@@ -106,14 +106,14 @@ Below is a radar image showing a tornado without a hook.
 - Though our model performs a bit better than random guessing, the model is still not very good at identifying hook echoes. <br>
 
 **Figure 6:** Mean ROC Curve generated from results of 10 model runs. <br>
-![MeanROC](figures/mean_ROC.png)
+![MeanROC](figures/markdown_figures/mean_ROC.png)
 Looking at Figure 6, we can see that most of the model runs performed better than random chance; however, Run 7 actually performed worse than random. Although this means that the model is learning something, the fact that at least 10% of the runs could perform only as well as random guessing indicates our model is unstable and not very precise. <br><br>
 **Figure 7:** Mean Confusion Matrix generated from results of 10 model runs. <br>
-![ConfusionMatrix](figures/mean_confusion_matrix.png)
+![ConfusionMatrix](figures/markdown_figures/mean_confusion_matrix.png)
 In Figure 7, our mean confusion matrix shows that the model ended up predicting about ⅔ of the tornadoes with hooks correct, and slightly over half of the tornadoes without hooks correct. However, the tornadoes without hooks performance has a relatively large error. This means our model is not very accurate, but considering our model was previously incorrectly categorizing all of the tornado with hooks, the final version of the model showed some improvement with the addition of balanced batching and data augmentation. <br><br>
 
 **Figure 8:** Model Prediction Probability based on 10 model runs. <br>
-![PDF](figures/prediction_pdf.png)
+![PDF](figures/markdown_figures/prediction_pdf.png)
 Looking at Figure 8, our prediction probability distribution confirms our previous findings. Both curves sit in the .4 - .6 range, meaning our model is fairly uncertain. However, the true tornadoes with hooks (hook) distribution is in a slightly higher range than the true tornado without hooks (no hook) distribution, showing that our model is slightly more confident in identifying hooks than no hooks.
 
 
@@ -124,7 +124,7 @@ Looking at Figure 8, our prediction probability distribution confirms our previo
 - This made it hard to actually label the data, and we as a group struggled to come up with a concrete definition of exactly what we were looking for. Though some hooks were very clear and well-defined, many weren’t, which left a lot of ambiguity in our training data. Figure 9 below shows an example of a frame that we were unsure how to label. <br>
 
 **Figure 9:** An example of a radar frame that we were unsure of whether there was a hook or not.
-![ambiguous hook](figures/ambiguous_hook.png)
+![ambiguous hook](figures/markdown_figures/ambiguous_hook.png)
 - This ambiguity, we believe, is what led to most of the errors with our model. If we didn’t know what we were looking for, how could the model?
 - Additionally, the balance batching method that we chose to address the class imbalance between tornadoes with hooks and tornadoes without hooks is likely underutilizing the labeled tornado without hook subset. Since there are so many more of those samples than tornado with hooks, it may be interesting to try testing model performance where data augmentation is only implemented on the tornado with hook class instead of both classes. 
 
